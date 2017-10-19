@@ -2,6 +2,7 @@
 // It's part of the Board Visualizer
 // The only portions you need to work on are the helper functions (below)
 
+
 (function() {
 
   window.Board = Backbone.Model.extend({
@@ -93,7 +94,7 @@
       if (counter > 1) {
         return true;
       }
-      return false; // fixme
+      return false; 
     },
 
     // test if any rows on this board contain conflicts
@@ -105,7 +106,7 @@
           return true;
         }
       }
-      return false; // fixme
+      return false; 
     },
 
 
@@ -159,7 +160,7 @@
           return true;
         }
       }
-      return false; // fixme
+      return false; 
     },
 
 
@@ -215,7 +216,7 @@
           return true;
         }
       }
-      return false; // fixme
+      return false; 
     },
 
 
@@ -224,11 +225,15 @@
     // --------------------------------------------------------------
     //
     // test if a specific minor diagonal on this board contains a conflict
+    
+    
+    
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
       var rows = this.rows();
       var reversedRows = [];
-      for (var i = 0; i < rows.length; i++) {
-        reversedRows.push(rows[i].reverse());
+      var copyArr = JSON.parse(JSON.stringify(rows)); 
+      for (var i = 0; i < copyArr.length; i++) {
+        reversedRows.push(copyArr[i].reverse());
       }
       
       var input = minorDiagonalColumnIndexAtFirstRow;
@@ -277,13 +282,14 @@
           return true;
         }
       }
-      return false; // fixme
+      return false; 
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
 
 
   });
+  
 
   var makeEmptyMatrix = function(n) {
     return _(_.range(n)).map(function() {
